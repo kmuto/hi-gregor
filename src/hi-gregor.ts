@@ -4,7 +4,7 @@
   My family names 'Gregor Samsa' to our Roomba. (You know the famous novel by Franz Kafka)
   Copyright 2023 Kenshi Muto
 
-  Usage: node dist/index.js [start|dock|status]
+  Usage: node dist/hi-gregor.js [start|dock|status]
   Status: run | HmUsrDock | charge | stop | stuck
 */
 import { exit } from 'process';
