@@ -9,6 +9,8 @@
 import pkg from '@slack/bolt';
 const { App } = pkg;
 import { execSync } from 'child_process';
+import dotenv from 'dotenv';
+dotenv.config();
 
 const app = new App({
   token: process.env.SLACK_BOT_TOKEN,

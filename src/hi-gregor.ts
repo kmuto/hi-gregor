@@ -12,6 +12,9 @@ import { getRobotIP, Local } from 'roomba-sdk'
 import { RoombaState } from 'roomba-sdk/dist/roomba-state';
 import { LocalV2Return } from 'roomba-sdk/dist/v2/local';
 import dgram from 'dgram';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const exportMessage = (msgs: Object) => {
   console.log(JSON.stringify(msgs));
