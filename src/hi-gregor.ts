@@ -74,7 +74,10 @@ async function operate(robot: LocalV2Return) {
 // UDP discover. This code was copied from original getRobotIP, due to avoid unnecessary console output.
 const udpServer = dgram.createSocket('udp4');
 
-udpServer.on('error', () => { udpServer.close(); });
+udpServer.on('error', (err) => {
+  udpServer.close();
+  exportMessage({ 'error': `Something error: ${err}` });
+});
 
 udpServer.on('message', (msg:any) => {
   try {
