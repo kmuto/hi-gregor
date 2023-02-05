@@ -18,9 +18,9 @@ const exportMessage = (msgs: Object) => {
 };
 
 // See https://www.npmjs.com/package/roomba-sdk?activeTab=readme#how-to-get-your-usernameblid-and-password
-// and get IROBOT_BLID and IROBOT_PASS. IROBOT_IP is local IPv4 address of your Roomba
-if (!process.env.IROBOT_BLID || !process.env.IROBOT_PASS || !process.env.IROBOT_IP) {
-  exportMessage({ 'error': 'Environment values (IROBOT_BLID, IROBOT_PASS, IROBOT_IP) are undefined.' });
+// and get IROBOT_BLID and IROBOT_PASS.
+if (!process.env.IROBOT_BLID || !process.env.IROBOT_PASS) {
+  exportMessage({ 'error': 'Environment values (IROBOT_BLID, IROBOT_PASS) are undefined.' });
   exit(1);
 }
 
