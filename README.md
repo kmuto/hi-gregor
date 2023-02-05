@@ -8,9 +8,9 @@ Copyright 2023 Kenshi Muto
 
 ルンバにコマンドを送る小さなプログラムです。
 
-- `node dist/hi-gregor.js status`: ルンバの動作状態とバッテリの値を返す
-- `node dist/hi-gregor.js start`: 清掃を開始する
-- `node dist/hi-gregor.js dock`: ドックに戻る
+- `npm run status`: ルンバの動作状態とバッテリの値を返す
+- `npm run start`: 清掃を開始する
+- `npm run dock`: ドックに戻る
 
 ## 注意
 
@@ -20,10 +20,11 @@ Copyright 2023 Kenshi Muto
 
 ```
 $ npm install
-$ npx tsc
+$ npm run build
+$ cp dot-env-tmpl .env
 ```
 
-実行前に、環境変数を設定してください。
+実行前に、.env ファイルを設定してください。
 
 - `IROBOT_BLID`: アクセスに使うID
 - `IROBOT_PASS`: アクセスに使うパスワード
@@ -40,13 +41,18 @@ $ npx roomba-sdk-creds ルンバのLAN内でのIPアドレス
 
 [How to get your username/blid and password](https://www.npmjs.com/package/roomba-sdk?activeTab=readme#how-to-get-your-usernameblid-and-password)
 
+## 周辺プログラム
+
+- dist/streamlistener.js : Socketモードを使い、Slackから状態の確認や清掃・ドック帰還指示を送るサンプル。Slackにアプリとして登録の上、.envファイルの `SLACK_BOT_TOKEN`、`SLACK_SIGNING_SECRET`、`SLACK_APP_TOKEN` を設定してください。
+- dist/cron-check.js : 定期実行でルンバの状態をSlackに送るサンプル。.envファイルの `SLACK_BOT_TOKEN`、`SLACK_SIGNING_SECRET`、`SLACK_APP_TOKEN`、`SLACK_CHANNEL` を設定してください。停止しているのに充電していないことをcron等で観測するためのものです。充電以外ではないときに報告を送ります。動作中か、停止していてバッテリ残量が60%を切っているときにSlackにメッセージを送ります。
+
 ## Overview
 
 A tiny program that sends commands to the Roomba.
 
-- `node dist/hi-gregor.js status`: get the status and the battery value
-- `node dist/hi-gregor.js start`: start cleaning
-- `node dist/hi-gregor.js dock`: back to the dock
+- `npm run status`: get the status and the battery value
+- `npm run start`: start cleaning
+- `npm run dock`: back to the dock
 
 ## Notice
 Since roomba-sdk can only use local APIs, this program can also only communicate between devices within the LAN.
@@ -56,10 +62,11 @@ If you want to not only post but also interact with Slack, etc., you will need a
 
 ```
 $ npm install
-$ npx tsc
+$ npm run build
+$ cp dot-env-tmpl .env
 ```
 
-Set environment variables before running.
+Modify .env file before running.
 
 - `IROBOT_BLID`: access ID
 - `IROBOT_PASS`: access password
