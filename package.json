@@ -5,7 +5,13 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npx tsc",
+    "server": "node dist/streamlisterner.js",
+    "watch": "node dist/cron-check.js",
+    "status": "node dist/hi-gregor.js status",
+    "start": "node dist/hi-gregor.js start",
+    "dock": "node dist/hi-gregor.js dock"
   },
   "author": "",
   "license": "ISC",
