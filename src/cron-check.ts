@@ -21,7 +21,7 @@ const app = new App({
 });
 
 function getStatus(): [string, number] {
-  const stdout = execSync('node dist/hi-gregor.js status'); // TODO: needs better
+  const stdout = execSync('npm run status'); // TODO: needs better
   const data = JSON.parse(stdout.toString());
   return [data['phase'], Number(data['battery'])];
 }

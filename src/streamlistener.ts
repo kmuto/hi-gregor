@@ -20,7 +20,7 @@ const app = new App({
 });
 
 function getStatus(): [string, number] {
-  const stdout = execSync('node dist/hi-gregor.js status'); // TODO: needs better
+  const stdout = execSync('npm run status'); // TODO: needs better
   const data = JSON.parse(stdout.toString());
   return [data['phase'], Number(data['battery'])];
 }
@@ -36,19 +36,19 @@ const label = (phase: string) => {
   }
 };
 
-app.message(/ザムザ|状態|じょうたい|ざむざ|status|samsa/, async ({ message, say }) => {
+app.message(/ザムザ|状態|じょうたい|ざむざ|ステータス|status|samsa/, async ({ message, say }) => {
   const data = getStatus();
   say(`ザムザは${label(data[0])} (バッテリ残量${data[1]}%)`);
 });
 
-app.message(/掃除|開始|はじめ|かいし|clean|start|go/, async ({ message, say }) => {
-  const stdout = execSync('node dist/hi-gregor.js start');
+app.message(/掃除|開始|はじめ|かいし|スタート|clean|start|go/, async ({ message, say }) => {
+  const stdout = execSync('npm run start');
   const data = getStatus();
   say(`ザムザ、掃除を始めます! (バッテリ残量${data[1]}%)`);
 });
 
-app.message(/戻れ|終わり|もどれ|おわり|おしまい|back|end|dock/, async ({ message, say }) => {
-  const stdout = execSync('node dist/hi-gregor.js dock');
+app.message(/戻れ|終わり|もどれ|おわり|おしまい|エンド|back|end|dock/, async ({ message, say }) => {
+  const stdout = execSync('npm run dock');
   const data = getStatus();
   say(`ザムザ、ドックに戻ります! (バッテリ残量${data[1]}%)`);
 });
