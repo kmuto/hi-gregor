@@ -5,7 +5,7 @@
   Copyright 2023 Kenshi Muto
 
   Usage: node dist/hi-gregor.js [start|dock|status]
-  Status: run | HmUsrDock | charge | stop | stuck
+  Status: run | hmUsrDock | charge | stop | stuck
 */
 import { exit } from 'process';
 import { getRobotIP, Local } from 'roomba-sdk'
