@@ -28,7 +28,7 @@ function getStatus(): [string, number] {
 const label = (phase: string) => {
   switch(phase) {
     case 'run': return '掃除してます!';
-    case 'HmUsrDock': return 'ドックに戻りちゅうです!';
+    case 'hmUsrDock': return 'ドックに戻りちゅうです!';
     case 'charge': return '充電中です。';
     case 'stop': return 'なぜか停止中です…?';
     case 'stuck': return '助けを求めています!!';
