@@ -43,7 +43,7 @@ $ npx roomba-sdk-creds ルンバのLAN内でのIPアドレス
 
 ## 周辺プログラム
 
-- dist/streamlistener.js : Socketモードを使い、Slackから状態の確認や清掃・ドック帰還指示を送るサンプル。Slackにアプリとして登録の上、.envファイルの `SLACK_BOT_TOKEN`、`SLACK_SIGNING_SECRET`、`SLACK_APP_TOKEN` を設定してください。
+- dist/streamlistener.js : Socketモードを使い、Slackから状態の確認や清掃・ドック帰還指示を送るサンプル。Slackにアプリとして登録の上、.envファイルの `SLACK_BOT_TOKEN`、`SLACK_SIGNING_SECRET`、`SLACK_APP_TOKEN` を設定してください。特定IDからのメッセージを無視したいときには、`IGNORE_IDS` にスペース区切りでそのIDを指定できます。
 - dist/cron-check.js : 定期実行でルンバの状態をSlackに送るサンプル。.envファイルの `SLACK_BOT_TOKEN`、`SLACK_SIGNING_SECRET`、`SLACK_APP_TOKEN`、`SLACK_CHANNEL` を設定してください。停止しているのに充電していないことをcron等で観測するためのものです。充電以外ではないときに報告を送ります。動作中か、停止していてバッテリ残量が60%を切っているときにSlackにメッセージを送ります。
 
 ## Overview
