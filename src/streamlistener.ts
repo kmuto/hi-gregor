@@ -25,6 +25,11 @@ function getStatus(): [string, number] {
   return [data['phase'], Number(data['battery'])];
 }
 
+function isIgnoreIDs(id: string): boolean {
+  if (process.env.IGNORE_IDS === undefined) return false;
+  return process.env.IGNORE_IDS.split(' ').includes(id);
+}
+
 const label = (phase: string) => {
   switch(phase) {
     case 'run': return '掃除してます!';
@@ -37,17 +42,21 @@ const label = (phase: string) => {
 };
 
 app.message(/ザムザ|状態|じょうたい|ざむざ|ステータス|status|samsa/, async ({ message, say }) => {
+  console.log(`きた ${message}`);
+  if (!message.subtype && isIgnoreIDs(message.user)) return;
   const data = getStatus();
   say(`ザムザは${label(data[0])} (バッテリ残量${data[1]}%)`);
 });
 
 app.message(/掃除|開始|はじめ|かいし|スタート|clean|start|go/, async ({ message, say }) => {
+  if (!message.subtype && isIgnoreIDs(message.user)) return;
   const stdout = execSync('npm run start');
   const data = getStatus();
   say(`ザムザ、掃除を始めます! (バッテリ残量${data[1]}%)`);
 });
 
 app.message(/戻れ|終わり|もどれ|おわり|おしまい|エンド|back|end|dock/, async ({ message, say }) => {
+  if (!message.subtype && isIgnoreIDs(message.user)) return;
   const stdout = execSync('npm run dock');
   const data = getStatus();
   say(`ザムザ、ドックに戻ります! (バッテリ残量${data[1]}%)`);
