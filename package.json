@@ -8,10 +8,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "npx tsc",
     "server": "node dist/streamlistener.js",
-    "watch": "node dist/cron-check.js",
-    "status": "node dist/hi-gregor.js status",
-    "start": "node dist/hi-gregor.js start",
-    "dock": "node dist/hi-gregor.js dock"
+    "watch": "timeout -s HUP 5 node dist/cron-check.js",
+    "status": "timeout -s HUP 5 node dist/hi-gregor.js status",
+    "start": "timeout -s HUP 5 node dist/hi-gregor.js start",
+    "dock": "timeout -s HUP 5 node dist/hi-gregor.js dock; sleep 2; timeout -s HUP 5 node dist/hi-gregor.js dock"
   },
   "author": "",
   "license": "ISC",
