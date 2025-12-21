@@ -7,8 +7,7 @@
   Call this from cron
   set channel ID to SLACK_CHANNEL of env file.
 */
-import pkg from '@slack/bolt';
-const { App } = pkg;
+import { App } from '@slack/bolt';
 import { execSync } from 'child_process';
 import dotenv from 'dotenv';
 

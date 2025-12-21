@@ -6,8 +6,7 @@
   Usage: node dist/streamlistener.js
   You need to register App to Slack and get/set valid Signing Secret, Bot User OAuth Token, and App-Level Token
 */
-import pkg from '@slack/bolt';
-const { App } = pkg;
+import { App } from '@slack/bolt';
 import { execSync } from 'child_process';
 import dotenv from 'dotenv';
 dotenv.config();
